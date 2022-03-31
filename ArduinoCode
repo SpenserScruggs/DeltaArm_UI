@@ -1,0 +1,41 @@
+#include <Servo.h>
+
+Servo servo1, servo2, servo3;
+int x = 0;
+int y = 0;
+int z = 0;
+
+void setup(){
+  Serial.begin(9600);
+  Serial.setTimeout(3);
+  servo1.attach(8);
+  servo2.attach(9);
+  servo3.attach(10);
+}
+
+void loop(){
+  while(Serial.available() == NULL){
+  }
+  String input = Serial.readString();
+  Serial.println(input);
+  String xval, yval, zval;
+  int x, y, z;
+
+  for(int i = 0; i < 3; i++){
+    xval += input[i];
+    yval += input[i+3];
+    zval += input[i+6]; 
+  }
+  x = xval.toInt();
+  y = yval.toInt();
+  z = zval.toInt();
+  
+  x = map(x, 0, 800, 0, 120);
+  y = map(y, 0, 600, 0, 120);
+  z = map(z, 100, 150, 35, 45);
+
+  servo1.write(x);
+  servo2.write(y);
+  servo3.write(z);
+
+}
