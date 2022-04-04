@@ -1,41 +1,75 @@
-#include <Servo.h>
+const float e = 24.0;     // end effector
+const float f = 75.0;     // base
+const float re = 150.0;
+const float rf = 100.0;
 
-Servo servo1, servo2, servo3;
-int x = 0;
-int y = 0;
-int z = 0;
+// trigonometric constants
+const float sqrt3 = 1.73205;
+const float pi = 3.141592653;    // PI
+const float sin120 = sqrt3 / 2.0;
+const float cos120 = -0.5;
+const float tan60 = sqrt3;
+const float sin30 = 0.5;
+const float tan30 = 1 / sqrt3;
 
-void setup(){
-  Serial.begin(9600);
-  Serial.setTimeout(3);
-  servo1.attach(8);
-  servo2.attach(9);
-  servo3.attach(10);
+
+// inverse kinematics
+// helper functions, calculates angle theta1 (for YZ-pane)
+int delta_calcAngleYZ(float x0, float y0, float z0, float& theta) {
+    float y1 = -0.5 * 0.57735 * f; // f/2 * tg 30
+    y0 -= 0.5 * 0.57735 * e;    // shift center to edge
+    // z = a + b*y
+    float a = (x0 * x0 + y0 * y0 + z0 * z0 + rf * rf - re * re - y1 * y1) / (2 * z0);
+    float b = (y1 - y0) / z0;
+    // discriminant
+    float d = -(a + b * y1) * (a + b * y1) + rf * (b * b * rf + rf);
+    if (d < 0) return -1; // non-existing point
+    float yj = (y1 - a * b - sqrt(d)) / (b * b + 1); // choosing outer point
+    float zj = a + b * yj;
+    theta = 180.0 * atan(-zj / (y1 - yj)) / pi + ((yj > y1) ? 180.0 : 0.0);
+    return 0;
 }
 
-void loop(){
+// inverse kinematics: (x0, y0, z0) -> (theta1, theta2, theta3)
+// returned status: 0=OK, -1=non-existing position
+int delta_calcInverse(float x0, float y0, float z0, float& theta1, float& theta2, float& theta3) {
+    theta1 = theta2 = theta3 = 0;
+    int status = delta_calcAngleYZ(x0, y0, z0, theta1);
+    if (status == 0) status = delta_calcAngleYZ(x0 * cos120 + y0 * sin120, y0 * cos120 - x0 * sin120, z0, theta2);  // rotate coords to +120 deg
+    if (status == 0) status = delta_calcAngleYZ(x0 * cos120 - y0 * sin120, y0 * cos120 + x0 * sin120, z0, theta3);  // rotate coords to -120 deg
+    return status;
+}
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Serial.setTimeout(3);
+}
+
+void loop() {
   while(Serial.available() == NULL){
   }
   String input = Serial.readString();
-  Serial.println(input);
   String xval, yval, zval;
   int x, y, z;
+  float theta1, theta2, theta3;
 
   for(int i = 0; i < 3; i++){
     xval += input[i];
     yval += input[i+3];
     zval += input[i+6]; 
-  }
+  }  
   x = xval.toInt();
   y = yval.toInt();
   z = zval.toInt();
   
-  x = map(x, 0, 800, 0, 120);
-  y = map(y, 0, 600, 0, 120);
-  z = map(z, 100, 150, 35, 45);
+  delta_calcInverse(x, y, z, theta1, theta2, theta3);
 
-  servo1.write(x);
-  servo2.write(y);
-  servo3.write(z);
-
+  Serial.print(theta1 * -1);
+  Serial.print(",");
+  Serial.print(theta2 * -1);
+  Serial.print(",");
+  Serial.print(theta3 * -1);
+  Serial.println("");
 }
