@@ -11,7 +11,8 @@ Prototype Render:
 Prototype Functioning:
 https://user-images.githubusercontent.com/78044374/164074046-c8909eee-885d-474c-8c80-e7db3166021f.mov
 
-
+Record Feature:
+https://user-images.githubusercontent.com/78044374/164074614-67ea297b-0f7b-4717-87f8-4b7f0d07ca0b.mov
 
 
 Known problems:
