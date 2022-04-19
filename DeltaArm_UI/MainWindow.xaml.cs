@@ -70,7 +70,7 @@ namespace DeltaArm_UI
         {
             port = new SerialPort();
             port.PortName = "COM3";
-            port.BaudRate = 9600;
+            port.BaudRate = 115200;
             running = true;
             Tracker();
             try
@@ -91,7 +91,6 @@ namespace DeltaArm_UI
             }
             else if (!recording)
             {
-                
                 recordSaved = new string[save_length];
                 recording = true;
             }
@@ -136,14 +135,14 @@ namespace DeltaArm_UI
                 int x = Convert.ToInt32(Mouse.GetPosition(inkCanvas1).X);
                 int y = 600 - Convert.ToInt32(Mouse.GetPosition(inkCanvas1).Y);
 
-                int z = 200;
+                int z = 225;
                 string x1, y1, z1;
 
                 if ((x >= 0) && (x <= 800) && (y >= 0) && (y <= 600))
                 {
                     if (mouseIsDown)
                     {
-                        z = 218;
+                        z = 235;
                     }
                     x1 = ReSize(x);
                     y1 = ReSize(y);
@@ -173,12 +172,7 @@ namespace DeltaArm_UI
                 if (port.IsOpen && (recordSaved[i] != null))
                 {
                     port.WriteLine(recordSaved[i]);
-                    await Task.Delay(15);
-                }
-                if (recordSaved[i] != null)
-                {
-                    Trace.WriteLine(recordSaved[i]);
-                    await Task.Delay(15);
+                    await Task.Delay(17);
                 }
             }
         }
