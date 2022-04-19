@@ -13,11 +13,3 @@ https://user-images.githubusercontent.com/78044374/164074046-c8909eee-885d-474c-
 
 Record Feature:
 https://user-images.githubusercontent.com/78044374/164074614-67ea297b-0f7b-4717-87f8-4b7f0d07ca0b.mov
-
-
-Known problems:
-
-1: Com port not recognized - I haven’t made a button on the application for selecting the comm port so to change it, first determine the port of your Arduino,
-then on line 58 of MainWindow.xaml.cs change the string to the desired comm port ("COM3" "COM4" ect.).
-
-
