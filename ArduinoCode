@@ -1,7 +1,12 @@
-const float e = 24.0;     // end effector
-const float f = 75.0;     // base
-const float re = 150.0;
-const float rf = 100.0;
+#include <Servo.h>
+
+Servo servo1, servo2, servo3;
+int startpos = 45;
+
+const float e = 30;     // end effector
+const float f = 105.0;     // base
+const float re = 110.0;
+const float rf = 155.0;
 
 // trigonometric constants
 const float sqrt3 = 1.73205;
@@ -43,17 +48,26 @@ int delta_calcInverse(float x0, float y0, float z0, float& theta1, float& theta2
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   Serial.setTimeout(3);
+  servo1.attach(8);
+  servo2.attach(9);
+  servo3.attach(10);
+  
+  servo1.write(startpos);
+  servo2.write(startpos + 10);
+  servo3.write(startpos);
 }
 
 void loop() {
-  while(Serial.available() == NULL){
+  while(Serial.available() == 0){
   }
   String input = Serial.readString();
   String xval, yval, zval;
   int x, y, z;
+  int th1, th2, th3;
   float theta1, theta2, theta3;
+  Serial.flush();
 
   for(int i = 0; i < 3; i++){
     xval += input[i];
@@ -64,12 +78,19 @@ void loop() {
   y = yval.toInt();
   z = zval.toInt();
   
+  x = map(x, 0, 800, -60, 60);
+  y = map(y, 0, 600, -45, 45);
+  
   delta_calcInverse(x, y, z, theta1, theta2, theta3);
-
-  Serial.print(theta1 * -1);
-  Serial.print(",");
-  Serial.print(theta2 * -1);
-  Serial.print(",");
-  Serial.print(theta3 * -1);
-  Serial.println("");
+  th1 = theta1 * -1;
+  th2 = theta2 * -1;
+  th3 = theta3 * -1;
+  
+  if((th1 && th2 && th3 > 1) && (th1 && th2 && th3 < 155)){
+    servo1.write(th1);
+    servo2.write(th2 + 10);
+    servo3.write(th3);
+  }
+  input = "";
+  xval, yval, zval = "";
 }
