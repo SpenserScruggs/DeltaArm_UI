@@ -135,14 +135,14 @@ namespace DeltaArm_UI
                 int x = Convert.ToInt32(Mouse.GetPosition(inkCanvas1).X);
                 int y = 600 - Convert.ToInt32(Mouse.GetPosition(inkCanvas1).Y);
 
-                int z = 178;
+                int z = 160;
                 string x1, y1, z1;
 
                 if ((x >= 0) && (x <= 800) && (y >= 0) && (y <= 600))
                 {
                     if (mouseIsDown)
                     {
-                        z = 192;
+                        z = 182;
                     }
                     x1 = ReSize(x);
                     y1 = ReSize(y);
