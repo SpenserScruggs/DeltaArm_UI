@@ -1,7 +1,7 @@
 # DeltaArm_UI
 A simple GUI to control a delta arm through serial input
 
-This project is currently in the prototype phase, it has some functionality but could still benefit from additional modifications. Here is my source for the kinematic equations:
+This project is currently in the prototype phase, it has some functionality but could still benefit from additional modifications. Here is the source for the kinematic equations:
 
 https://hypertriangle.com/~alex/delta-robot-tutorial/
 
