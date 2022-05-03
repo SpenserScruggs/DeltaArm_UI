@@ -33,7 +33,7 @@ File contains all components needed for creation of the arm, as well as the pric
 
 
 Manufacturing Plan:
-
+https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/Manufacturing%20Plan%20(1).docx
 
 Document provides step by step instructions for how to assemble the project.
 
