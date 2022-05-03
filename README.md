@@ -32,6 +32,9 @@ https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/BOM.xlsx
 File contains all components needed for creation of the arm, as well as the prices, size, mass, and location of purchase of the components.
 
 
+Manufacturing Plan:
 
+
+Document provides step by step instructions for how to assemble the project.
 
 
