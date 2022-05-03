@@ -21,3 +21,4 @@ invKin.m
 Code describes delta robot arms through 3 loop closure equations. Each loop closure equation is transformed from cartesian to a servo angle. Transformed loop closure equations are then trigonemetricly subsituted. Trig subbed equations are then solved with the quadratic formula and 2 solutions are given for every equation one solution with arms kinked in and one with arms kinked out. The kinked out solution is selected through a sorting loop that chooses the smaller servo position thus selecting the preffered solution. From there the selected solutions from each loop closure solution is combined into an array and returned.
 
 
+AutoCAD files for frame of arm:
