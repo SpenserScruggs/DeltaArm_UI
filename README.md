@@ -27,3 +27,11 @@ https://github.com/SpenserScruggs/DeltaArm_UI/tree/master/AutoCAD%20Drawings
 Folder Contains all of the AutoCAD drawings that are needed for the frame of the arm. 
 
 BOM File:
+https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/BOM.xlsx
+
+File contains all components needed for creation of the arm, as well as the prices, size, mass, and location of purchase of the components.
+
+
+
+
+
