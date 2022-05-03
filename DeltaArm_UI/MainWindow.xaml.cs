@@ -17,42 +17,59 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using System.Diagnostics;
 
+/// <summary>
+/// Created by: Spenser Scruggs
+/// Date: 5/2/2022
+/// 
+/// This Project was created as a graphical user interface for the delta arm project
+/// It does this by taking mouse positions and sending them via serial communication to an arduino
+/// thoes positions are then converted to servo positions using inverse kinematics
+/// </summary>
+
 
 namespace DeltaArm_UI
 {
     public partial class MainWindow : Window
     {
+        // initiates serial port
         private SerialPort port = new SerialPort();
 
+        // sets the bool for the tracker
         public bool running = false;
 
+        // sets the bool for the recorde feature
         public bool recording = false;
         static public int save_length = 1000;
         public string[] recordSaved = new string[save_length];
 
+        // color for the record button
         public int color = 0;
         
-
+        // initialize application
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        // initializes the ink canvas
         private void inkCanvas1_Gesture(object sender, InkCanvasGestureEventArgs e)
         {
         }
 
+        // button that clears the canvas
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             this.inkCanvas1.Strokes.Clear();
         }
 
+        // button that closes the program
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             port.Close();
             this.Close();
         }
 
+        // makes enter a shortcut for clearing the canvas
         private void OnKeyDownHandler(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -61,11 +78,13 @@ namespace DeltaArm_UI
             }
         }
 
+        // pause button that stops the program (not a good idea to click)
         private void Button4_Click(object sender, RoutedEventArgs e)
         {
             running = false;
         }
 
+        // starts the program (only press once)
         private void Button3_Click(object sender, RoutedEventArgs e)
         {
             port = new SerialPort();
@@ -83,6 +102,7 @@ namespace DeltaArm_UI
             }
         }
 
+        // saves the recording to a new string array
         private void Button5_Click(object sender, RoutedEventArgs e)
         {
             if (recording)
@@ -105,11 +125,13 @@ namespace DeltaArm_UI
             color++;
         }
 
+        // plays the recording
         private void Button6_Click(object sender, RoutedEventArgs e)
         {
             PlayRecording();
         }
         
+        // maps the integer inputs to their correct string length
         private string ReSize(int x)
         {
             string val = x.ToString();
@@ -125,6 +147,7 @@ namespace DeltaArm_UI
             return val;
         }
 
+        // function that tracks the mouse while on the canvas
         public async void Tracker()
         {
 
@@ -165,6 +188,7 @@ namespace DeltaArm_UI
             }
         }
 
+        // plays the recorded string with a given delay
         public async void PlayRecording()
         {
             for (int i = 0; i < recordSaved.Length; i++)
