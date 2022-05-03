@@ -22,3 +22,8 @@ Code describes delta robot arms through 3 loop closure equations. Each loop clos
 
 
 AutoCAD files for frame of arm:
+https://github.com/SpenserScruggs/DeltaArm_UI/tree/master/AutoCAD%20Drawings
+
+Folder Contains all of the AutoCAD drawings that are needed for the frame of the arm. 
+
+BOM File:
