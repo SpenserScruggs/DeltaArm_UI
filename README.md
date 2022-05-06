@@ -38,7 +38,7 @@ https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/BOM.xlsx
 
 
 **Manufacturing Plan:**
-https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/Manufacturing%20Plan%20(1).docx
+https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/Manufacturing%20Plan.docx
 
   Document provides step by step instructions for how to assemble the project.
 
