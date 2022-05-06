@@ -1,7 +1,7 @@
 # DeltaArm_UI
 The goal of this project was to create a robotic arm that could track mouse movements and physicaly write them out on paper. Its purpose was to make signing large amounts of physical documents easier by recording a signeture and then replaying it as many times as necisary. The project also exist as just a fun item to build and design and to help introduce people to robotics and electro-mechanical systems.
 
-This project includes the code for a graphical user interface made useing WPF, Arduino code to interface with the the computer, files for both the 3D printed parts and lazer cut parts, matlab code to model the kinematic system, a bill of materials to list each part required, their quantity, and an Amazon link to purchase the part if applicable, and a manufacturing plan to give step by step instructions for assembly.
+This project includes the code for a graphical user interface made useing WPF, Arduino code to interface with the the computer, files for both the 3D printed parts and lazer cut parts, matlab code to model the kinematic system, a bill of materials to list each part required with both their quantity and an Amazon link to purchase the part listed if applicable, and a manufacturing plan to give step by step instructions for assembly.
 
 Final Product:
 ![IMG_0710](https://user-images.githubusercontent.com/78044374/167205772-4779bab4-ca41-42d7-8c32-6ada8e1bc74a.jpg)
