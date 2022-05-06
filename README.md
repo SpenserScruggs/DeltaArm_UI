@@ -42,7 +42,7 @@ GUI Application:
 https://github.com/SpenserScruggs/DeltaArm_UI/tree/master/DeltaArm_UI
 
 This folder containes the C# and xaml code necisary to make the GUI and run the application (only works on Windows).
-Additionaly if you only want the application you can download it directly here at:
+Additionaly if you only want the application you can download it directly here at: https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/DeltaArm_UI.exe
 
 Source for the kinematic equations:
 https://hypertriangle.com/~alex/delta-robot-tutorial/
