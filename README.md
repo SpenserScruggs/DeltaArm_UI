@@ -51,12 +51,15 @@ https://github.com/SpenserScruggs/DeltaArm_UI/tree/master/DeltaArm_UI
 
 **Circuit Diagram:**
 https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/Circuit_Diagram.png
-
-
-**Source for the kinematic equations:**
-https://hypertriangle.com/~alex/delta-robot-tutorial/
+  
+  Circuit Diagram for the arduino and power supply
 
 
 **Arduino Code:**
 https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/GUIKinematics2.ino
 
+  Code that passes the xyz positions to the kinematic equations which can be converted to servo positions
+
+
+**Source for the kinematic equations:**
+https://hypertriangle.com/~alex/delta-robot-tutorial/
