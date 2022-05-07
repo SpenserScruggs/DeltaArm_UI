@@ -49,6 +49,10 @@ https://github.com/SpenserScruggs/DeltaArm_UI/tree/master/DeltaArm_UI
   This folder contains the C# and xaml code necessary to make the GUI and run the application (only works on Windows). To run it right click on the folder and select open with, then open with visual studio. Additionally if you only want the application/ don’t want to download visual studio you can download the executable directly here at: https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/DeltaArm_UI.exe
 
 
+**Circuit Diagram:**
+https://github.com/SpenserScruggs/DeltaArm_UI/blob/master/Circuit_Diagram.png
+
+
 **Source for the kinematic equations:**
 https://hypertriangle.com/~alex/delta-robot-tutorial/
 
